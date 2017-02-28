@@ -1,0 +1,419 @@
+<div  id="test_container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div id="search_box" class="widget-box  ui-sortable-handle collapsed">
+				<div class="widget-header">
+				    <div class="nav-search"  style="padding-top: 5px;  right: 50px">
+						<span class="input-icon">
+							<input type="text"  i18n="com.loy.upm.sys.test.name" placeholder=" "   id="queryParam_name" class="nav-search-input"  >
+							<i class="ace-icon fa fa-search nav-search-icon"
+							 onclick="$('#testSearchBtn',$('#test_container')).click()" ></i>
+						</span>
+					</div>
+				    
+					<div class="widget-toolbar">
+						<a href="#" data-action="collapse">
+							<i class="1 ace-icon fa bigger-125 fa-chevron-up"></i>
+						</a>
+					</div>
+
+				</div>
+
+				<div class="widget-body" style="display: none;">
+					<div class="widget-main">
+						<div class="row">
+							<div style="padding-left: 10px">
+							      <div class="col-xs-12 col-sm-2 "><input type="text"  i18n="com.loy.upm.sys.test.user.name" placeholder ="null" class="form-control  search-query" id="queryParam_userName" name="userName" /></div>
+							 
+							      <div class="col-xs-12 col-sm-2 ">
+							     
+							      <select class="form-control chosen-select"  id="queryParam_married" name="married"> <option value="" i18n="com.loy.upm.sys.test.married"></option>  <option value="true">Y</option>  <option value="false">N</option> </select></div>
+					           <div class="col-xs-12 col-sm-2 " style="float:right">
+							    <div id="testSearchDiv" class="input-group" style="padding-bottom: 2px">
+								  
+									<span class="input-group-btn" >
+										<button id="testSearchBtn" type="button" class="btn btn-purple btn-sm">
+											<span class="ace-icon fa fa-search icon-on-right bigger-110"></span>
+											<span i18n="find"></span>
+										</button>
+									</span>
+				              </div>
+				              </div>
+				         </div>     
+			            </div>
+					</div>
+				</div>
+			</div>
+							    
+			
+			<table id="test_grid-table"></table>
+
+			<div id="test_grid-pager"></div>
+
+		</div>
+		<!-- /.col -->
+	</div>
+	<!-- /.row -->
+	
+	
+	<div id="testModalDiv" class="modal fade" tabindex="-1" data-backdrop="static">
+		<div class="modal-dialog" >
+				<div class="modal-content">
+					<div class="modal-header no-padding">
+						<div class="table-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+								<span class="white">&times;</span>
+							</button>
+							<span i18n="com.loy.upm.sys.test"></span>
+						</div>
+					</div>
+					<div class="modal-body" style="max-height: 450px;overflow-y: scroll;">
+						<div id="modal-tip" class="red clearfix"></div>
+						<div>
+							<div class="widget-body">
+								<form id="testForm" name="testForm" class="form-horizontal  col-xs-12">
+								     <input type="hidden"  name="id" id="id"/>
+                                    <div class="row" style="padding-bottom: 2px">
+								         <div class="form-group">
+					                          <label class="col-sm-3 control-label"  i18n="com.loy.upm.sys.test.user"></label>
+					                          <div class="col-sm-6">
+					                             <select class="form-control chosen-select" id="user" name="user.id" nameField="name" entityName="UserEntity"> <option value=""></option> </select>
+					                          </div>
+					                     </div>
+                                    </div>
+                                    <div class="row" style="padding-bottom: 2px">
+								         <div class="form-group">
+					                          <label class="col-sm-3 control-label"  i18n="com.loy.upm.sys.test.sex"></label>
+					                          <div class="col-sm-6">
+					                             <select class="form-control chosen-select" group="sex" id="sex" name="sex.id"> <option value=""></option> </select>
+					                          </div>
+					                     </div>
+                                    </div>
+                                    <div class="row" style="padding-bottom: 2px">
+								         <div class="form-group">
+					                          <label class="col-sm-3 control-label"  i18n="com.loy.upm.sys.test.name"></label>
+					                          <div class="col-sm-6">
+					                             <input type="text"  class="form-control" id="name" name="name" />
+					                          </div>
+					                     </div>
+                                    </div>
+                                    <div class="row" style="padding-bottom: 2px">
+								         <div class="form-group">
+					                          <label class="col-sm-3 control-label"  i18n="com.loy.upm.sys.test.married"></label>
+					                          <div class="col-sm-6">
+					                             <label class="inline"><input type="checkbox" value="true"  class="form-control ace ace-switch ace-switch-5" id="married" name="married" /><span class="lbl"></span></label>
+					                          </div>
+					                     </div>
+                                    </div>
+								</form>
+									
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer no-margin-top">
+						<div class="text-center">
+							
+							<button id="submitTestBtn"  class="btn btn-sm btn-primary">
+							  <i class="ace-icon fa fa-floppy-o"></i>
+							  <span i18n="save"></span>
+							</button>
+							
+							<button class="btn btn-sm"  data-dismiss="modal">
+							  <i class="ace-icon fa fa-share "></i>
+							 <span i18n="cancel"></span>
+							</button>
+						</div>
+					</div>
+				</div><!-- /.modal-content -->
+			
+		</div><!-- /.modal-dialog -->
+	</div>
+	
+	
+	
+	
+     <div id="testViewModalDiv" class="modal fade" tabindex="-1" data-backdrop="static">
+		<div class="modal-dialog" >
+				<div class="modal-content">
+					<div class="modal-header no-padding">
+						<div class="table-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+								<span class="white">&times;</span>
+							</button>
+							<span i18n="com.loy.upm.sys.test"></span>
+						</div>
+					</div>
+					<div class="modal-body" style="max-height: 450px;overflow-y: scroll;">
+						<div id="modal-tip" class="red clearfix"></div>
+						<div>
+							<div class="widget-body">
+								<form class="form-horizontal  col-xs-12">
+								    
+                                    <div class="row" style="padding-bottom: 2px">
+								         <div class="form-group">
+					                          <label class="col-sm-3 control-label"  i18n="com.loy.upm.sys.test.user.name"></label>
+					                          <div class="col-sm-6"  id="view_userName"> 
+					                          </div>
+					                     </div>
+                                    </div>
+                                    <div class="row" style="padding-bottom: 2px">
+								         <div class="form-group">
+					                          <label class="col-sm-3 control-label"  i18n="com.loy.upm.sys.test.sex"></label>
+					                          <div class="col-sm-6"  id="view_sex"> 
+					                          </div>
+					                     </div>
+                                    </div>
+                                    <div class="row" style="padding-bottom: 2px">
+								         <div class="form-group">
+					                          <label class="col-sm-3 control-label"  i18n="com.loy.upm.sys.test.name"></label>
+					                          <div class="col-sm-6"  id="view_name"> 
+					                          </div>
+					                     </div>
+                                    </div>
+                                    <div class="row" style="padding-bottom: 2px">
+								         <div class="form-group">
+					                          <label class="col-sm-3 control-label"  i18n="com.loy.upm.sys.test.married"></label>
+					                          <div class="col-sm-6"  id="view_married"> 
+					                          </div>
+					                     </div>
+                                    </div>
+								</form>
+									
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer no-margin-top">
+						<div class="text-center">
+							<button class="btn btn-sm"  data-dismiss="modal">
+							  <i class="ace-icon fa fa-share "></i>
+							 <span i18n="cancel"></span>
+							</button>
+						</div>
+					</div>
+				</div><!-- /.modal-content -->
+			
+		</div><!-- /.modal-dialog -->
+	</div>
+	
+</div>
+
+
+
+<script type="text/javascript">
+var scripts = [ null,null ];
+$('.page-content-area').ace_ajax('loadScripts', scripts, function() {
+	var $container = $('#test_container');
+	var grid_selector  = "#test_grid-table";
+	var pager_selector = "#test_grid-pager";
+	
+	
+	var colNames;
+	var  testGrid = null;
+	$.loy.i18n(['upm/i18n/sys/test'],$.homeGlobal.LANG,$container,{custCallback:function(){
+		$('input, textarea',$container).placeholder();
+		colNames =[' ',
+			$.i18n.prop("com.loy.upm.sys.test.user.name") ,
+			$.i18n.prop("com.loy.upm.sys.test.sex") ,
+			$.i18n.prop("com.loy.upm.sys.test.name") ,
+			$.i18n.prop("com.loy.upm.sys.test.married")
+		];
+		$('#user').cchosen({allow_single_deselect:true,
+		placeholder_text_single:$.i18n.prop("pleaseChoose")});
+		$(window)
+			.off('resize.chosen')
+			.on('resize.chosen', function() {
+				$('.chosen-select').each(function() {
+					 var $this = $(this);
+					 $this.next().css({'width': $this.parent().width()});
+				})
+			}).trigger('resize.chosen');
+			$('#testModalDiv',$container).on('shown.bs.modal', function () {
+			$('.chosen-select',$('#testModalDiv',$container)).each(function() {
+				 var $this = $(this);
+				 $this.next().css({'width': $this.parent().width()});
+			});
+		});
+		$('#search_box',$container).on('shown.ace.widget', function(e) {
+			$('.chosen-container',$('#search_box',$container)).each(function() {
+				 var $this = $(this);
+				 $this.css({'width': $this.parent().width()});
+			});
+			var searchConditionHeight = $('.widget-body',$('#search_box',$container)).height();
+			testGrid.setGridHeight(getGridDefaultHeight()-searchConditionHeight);
+		});
+		$('#search_box',$container).on('hide.ace.widget', function(e) {
+			var searchConditionHeight = $('.widget-body',$('#search_box',$container)).height();
+			testGrid.setGridHeight(getGridDefaultHeight());
+		});
+		$.loy.buildSelectOptions('sex',$('#sex',$container).attr("group"),$.i18n.prop("pleaseChoose"));
+		createTestGrid();
+	}});
+	
+	var $validateTestForm = $('#testForm',$container).validate({
+    	onsubmit:false,
+    	rules : {
+			/**name : {
+				required : true,
+			}*/
+		}
+    });
+	function clearTestForm(){
+		$('#user',$container).val('');
+		$('#user',$container).trigger("chosen:updated");
+		$('#sex',$container).val('');
+		$('#sex',$container).trigger("chosen:updated");
+		$('#name',$container).val('');
+		$('#married',$container).prop("checked", false);
+	}
+	function edit (id){
+		clearTestForm();
+		$('#submitTestBtn',$container).attr("url","test/update");
+		$('#testModalDiv',$container).modal("show");
+		$.loy.ajax({
+			url:'test/get',
+			data:{id:id},
+			success:function(data){
+				var result = data.data;
+				$('#id',$container).val(result.id?result.id:'');
+				var userIdValue = '';
+				if(result.user && result.user.id){
+					userIdValue = result.user.id;
+				}
+				if(userIdValue && userIdValue !=''){
+					var name = result.user.name?result.user.name:'';
+					$('#user',$container).html('<option value=""></option> <option selected value="'+userIdValue+'">'+name+'</option>');
+					$('#user',$container).trigger("chosen:updated");
+				}
+				var sexIdValue = '';
+				if(result.sex && result.sex.id){
+					sexIdValue = result.sex.id;
+				}
+				$('#sex',$container).val(sexIdValue);
+				$('#sex',$container).trigger("chosen:updated");
+				$('#name',$container).val(result.name?result.name:'');
+				if(result.married){
+					$('#married',$container).prop("checked", true);
+				}else{
+					$('#married',$container).prop("checked", false);
+				}
+			}
+	   });
+	}
+	function view (id){
+		$('#testViewModalDiv').modal("show");
+		$.loy.ajax({
+			url:'test/get',
+			data:{id:id},
+			success:function(data){
+				var result = data.data;
+				var v = null;
+				v = $.loy.getObjectValue(result,"user.name");
+				$('#view_userName',$container).html(v?v:'');
+				v = $.loy.getObjectValue(result,"sex.name");
+				$('#view_sex',$container).html(v?v:'');
+				v = $.loy.getObjectValue(result,"name");
+				$('#view_name',$container).html(v?v:'');
+				v = $.loy.getObjectValue(result,"married");
+				if(v){
+					$('#view_married',$container).html('<input type="checkbox" checked="checked"  disabled="disabled" >');
+				}else{
+					$('#view_married',$container).html('<input type="checkbox" disabled="disabled" >');
+				}
+			}
+		});
+  }
+  function add(){
+		clearTestForm();
+		$('#id',$container).val('');
+		$('#submitTestBtn',$container).attr("url","test/save");
+		$('#testModalDiv',$container).modal("show");
+  }
+  
+	$('#queryParam_name',$container).bind('keypress',function(event){
+        if(event.keyCode == "13"){
+           $('#testSearchBtn',$container).click();
+        }
+    });
+	$("#testSearchBtn",$container).click(function(){
+	    var postData ={page:0};
+		postData["userName"] = $("#queryParam_userName",$container).val();
+		postData["married"] = $("#queryParam_married",$container).val();
+		testGrid.loyGrid("setGridParam",{"postData":postData}).trigger("reloadGrid"); 
+		
+	});
+	
+	$('#submitTestBtn').click(function(){
+	     if(!$validateTestForm.checkForm()){
+			$validateTestForm.defaultShowErrors();
+			return;
+		 }
+		 var url = $(this).attr("url");
+         $.loy.ajax({
+				url:url,
+				data:$("#testForm",$container).serialize(),
+				success:function(data){
+					if(data.success){
+						$('#testModalDiv',$container).modal("hide");
+						testGrid.trigger("reloadGrid");
+					}
+				}
+		});
+    });
+	function  createTestGrid(){
+		testGrid =jQuery(grid_selector).loyGrid({
+			url: 'test/page',
+			datatype: "json",
+			mtype: 'GET',
+			colNames:colNames,
+			colModel: [
+				{name:'myac',index:'', width:80, fixed:true, sortable:false, resize:false ,
+					formatter:'actions', 
+					formatoptions:getFormatoptions('test/')
+				},
+		   		{ name: 'user.name', index: 'user.name',sortable:false, width: 100, align: "left", editable: false, formatter:function(cellvalue, options, rowObject){
+					if(rowObject.user){
+						return rowObject.user.name;
+					}
+		   			return "";
+				}} ,
+		   		{ name: 'sex.name', index: 'sex.name',sortable:false, width: 100, align: "left", editable: false, formatter:function(cellvalue, options, rowObject){
+					if(rowObject.sex){
+						return rowObject.sex.name;
+					}
+		   			return "";
+				}} ,
+		   		{ name: 'name', index: 'name',sortable:true, width: 100, align: "left", editable: false} ,
+		   		{ name: 'married', index: 'married',sortable:false,formatter:'checkbox' , width: 100, align: "left", editable: false}
+				],
+			pager: pager_selector,
+			//width:$(".page-content").width(),
+			//height: '310',
+			loadComplete:function(data){
+				loadComplete(data);
+				var list = data.data?data.data.content:null;
+				if(list){
+					for(var i=0;i<list.length;i++){
+						var editDivId = "jEditButton_"+list[i].id;
+						$('#'+editDivId,testGrid).attr('onclick','').on('click',function(){
+							edit($(this).closest('tr').attr('id'));
+						});
+					}
+				}	
+			}
+		}).loyGrid('navGrid','#test_grid-pager',{"baseUrl":"test/",
+			"addfunc":function(){
+				add();
+			},
+			"editfunc":function(rowId){
+				edit(rowId);
+			},
+			"viewfunc":function(rowId){
+				view(rowId);
+			},
+			view: true
+		});
+		testGrid.jqGrid('setFrozenColumns');
+	}
+});
+
+</script>

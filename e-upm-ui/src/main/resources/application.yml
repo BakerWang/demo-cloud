@@ -1,0 +1,40 @@
+e:
+ conf:
+    attachmentBaseDirectory : ./upload
+    defaultLocale: zh_CN
+    debugPageResult: false
+    recordOperateLog: true
+    supportLocales: 
+                 - en_US
+                 - zh_CN 
+    defaultPage: readme.html
+       
+    staticMappings:
+         /upm/component/**: 
+                - classpath:/static/component/
+                - classpath:/public/component/
+         /upm-ui/**: 
+            - classpath:/static/
+ 
+spring:
+   application:
+            name: upm-ui
+   
+server:
+    port: 19090
+    tomcat:
+      uri-encoding: UTF-8
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/ # 指定注册中心的地址
+  instance:
+    preferIpAddress: true
+
+     
+logging:
+    path: ./logs
+    file: ./logs/upm.log
+
+

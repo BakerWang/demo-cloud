@@ -1,0 +1,16 @@
+
+<div id="readme_md_container" style="padding-left: 5px">
+
+
+
+</div>
+<script type="text/javascript">
+	var scripts = [ null, "component/assets/js/marked.js", null ];
+	
+	$('.page-content-area').ace_ajax('loadScripts', scripts, function() {
+
+		 $.get("README.md", function(result){
+			 $('#readme_md_container').html(marked(result));
+		});
+	});
+</script>
